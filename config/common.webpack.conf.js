@@ -29,7 +29,7 @@ module.exports = {
         {
           enforce: 'pre',
           test: /\.ts$/,
-          loader: 'tslint',
+          use: 'tslint-loader',
           exclude: [
             /node_modules/,
             /\.(spec|e2e)\.ts$/
@@ -38,38 +38,47 @@ module.exports = {
         {
           enforce: 'pre',
           test: /\.js$/,
-          loader: 'source-map'
+          use: 'source-map-loader'
         },
         {
           test: /\.ts$/,
-          loader: 'awesome-typescript',
+          use: 'awesome-typescript-loader',
           exclude: [ /\.(spec|e2e)\.ts$/ ]
         },
         {
-          test: /\.json$/,
-          loader: 'json'
-        },
-        {
           test: /\.html$/,
-          loader: 'raw',
+          use: 'raw-loader',
           exclude: [ helpers.root('src/index.html') ]
         },
         {
           test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-          loader: 'file?name=assets/[name].[hash].[ext]'
+          use: 'file-loader?name=assets/[name].[hash].[ext]'
         },
         {
           test: /\.scss/,
-          loader: 'raw!postcss?sourceMap!sass?sourceMap',
+          use: [
+            'raw-loader',
+            'postcss-loader?sourceMap',
+            'sass-loader?sourceMap'
+          ],
           include: helpers.root('src/app')
         },
         {
           test: /main\.scss/,
-          loader: 'style!css!postcss!sass'
+          use: [
+            'style-loader',
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ]
         },
         {
           test: /\.css/,
-          loader: 'style!css!postcss'
+          use: [
+            'style-loader',
+            'css-loader',
+            'postcss-loader'
+          ]
         }
       ],
       noParse: [
