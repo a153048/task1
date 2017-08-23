@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -15,7 +15,7 @@
     "allowUnusedLabels": false,
 
     "noLib": false,
-    "noEmitHelpers": true,
+    "noEmitHelpers": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false,
     "noImplicitUseStrict": true,
